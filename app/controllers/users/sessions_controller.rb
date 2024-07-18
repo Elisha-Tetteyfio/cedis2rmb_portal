@@ -3,25 +3,14 @@
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
-  # GET /resource/sign_in
-  # def new
-  #   super
-  # end
+  before_action :check_if_admin, only: [:create]
 
-  # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  private
 
-  # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
-
-  # protected
-
-  # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_in_params
-  #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
-  # end
+  def check_if_admin
+    user = User.find_by(email: params[:user][:email])
+    if user && !user.admin?
+      redirect_to root_path, alert: 'Access restricted to admins only.'
+    end
+  end
 end
