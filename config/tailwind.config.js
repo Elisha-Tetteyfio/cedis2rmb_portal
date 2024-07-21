@@ -13,6 +13,13 @@ module.exports = {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
     },
+    colors: {
+      'body_bg': '#efefef',
+      'white': '#ffffff',
+      'form_border': '#e6e6e6',
+      'font-grey': '#737373',
+      'blue': '#4f71fa'
+    },
   },
   plugins: [
     require('@tailwindcss/forms'),
