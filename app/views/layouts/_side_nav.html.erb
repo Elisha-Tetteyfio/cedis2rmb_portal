@@ -1,0 +1,23 @@
+<div class="bg-white w-[20%] h-screen flex flex-col justify-between p-4 border-r-2 border-body_bg border-solid">
+  <div class="flex flex-col gap-y-3.5">
+    <div>
+      <div class="flex items-center mb-4 gap-x-2.5">
+        <%= image_tag 'logo_blue.svg', alt: 'logo', class: 'w-[40px]' %>
+        <p class="font-bold text-sm">Cedis2RMB</p>
+      </div>
+    </div>
+    <div class="flex flex-col gap-y-1">
+      <div class= "bg-blue w-[100%] h-[30px] px-2 flex items-center m-auto rounded text-blue bg-opacity-10">Dashboard</div>
+      <div class= "w-[100%] h-[30px] px-2 flex items-center m-auto rounded bg-opacity-10">Orders</div>
+      <div class= "w-[100%] h-[30px] px-2 flex items-center m-auto rounded bg-opacity-10">Settings</div>
+    </div>
+  </div>
+  <div>
+    <%= 
+      button_to 'Logout',
+      destroy_user_session_path,
+      method: :delete,
+      class: "bg-blue w-[100%] m-auto rounded text-white h-[30px]"
+    %>
+  </div>
+</div>

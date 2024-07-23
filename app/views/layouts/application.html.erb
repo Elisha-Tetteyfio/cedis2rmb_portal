@@ -12,10 +12,20 @@
   </head>
 
   <body class="bg-body_bg">
-    <main class="container">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      <%= yield %>
+    <main class="w-[100%]">
+      <% if user_signed_in? %>
+        <div class="w-[100%] flex">
+          <%= render "layouts/side_nav" %>
+          <p class="notice"><%#= notice %></p>
+          <p class="alert"><%#= alert %></p>
+          <div class="w-[100%]">
+            <%= render "layouts/header" %>
+            <%= yield %>
+          </div>
+        </div>
+      <% else %>
+        <%= yield %>
+      <% end %>
     </main>
   </body>
 </html>
