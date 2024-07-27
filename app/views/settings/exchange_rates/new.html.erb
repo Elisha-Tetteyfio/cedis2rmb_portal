@@ -1,7 +1,29 @@
-<div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">New exchange rate</h1>
+<%= turbo_frame_tag "rate_form" do %>
+  <div class="w-screen h-screen fixed inset-0 bg-blue bg-opacity-10 flex justify-center items-center">
 
-  <%= render "form", exchange_rate: @exchange_rate %>
+    <!-- Modal -->
+    <div class="w-[30%] bg-white rounded-lg p-5 shadow">
+      <div class="flex justify-between mb-4">
+        <div class="font-bold text-xl">Update exchange rate</div>
 
-  <%= link_to "Back to exchange rates", exchange_rates_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-</div>
+        <%= link_to "X", settings_exchange_rates_path, 
+        class: "font-bold text-xl" %>
+      </div>
+
+      <div class="text-lg font-light">
+        Current value: <%= @current_rate.value %>
+      </div>
+    
+      <%= form_with(model: @exchange_rate, url: settings_exchange_rates_path, class: "contents") do |form| %>
+        <div class="my-5 text-lg font-light">
+          <%= form.label "New value: " %>
+          <%= form.text_field :value, class: "outline-none h-[20px] w-[70px] border-0 border-b-2 border-solid border-black focus:ring-0" %>
+        </div>
+
+        <div class="w-[70%] h-[35px] bg-blue rounded text-center text-white m-auto">
+          <%= form.submit "Update Exchange Rate" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

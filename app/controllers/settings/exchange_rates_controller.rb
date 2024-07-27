@@ -3,7 +3,7 @@ class Settings::ExchangeRatesController < ApplicationController
 
   # GET /exchange_rates or /exchange_rates.json
   def index
-    @exchange_rates = ExchangeRate.all
+    @exchange_rates = ExchangeRate.all.order(created_at: :desc)
     @current_rate = ExchangeRate.current_rate
   end
 
@@ -14,6 +14,7 @@ class Settings::ExchangeRatesController < ApplicationController
   # GET /exchange_rates/new
   def new
     @exchange_rate = ExchangeRate.new
+    @current_rate = ExchangeRate.current_rate
   end
 
   # GET /exchange_rates/1/edit
@@ -23,13 +24,14 @@ class Settings::ExchangeRatesController < ApplicationController
   # POST /exchange_rates or /exchange_rates.json
   def create
     @exchange_rate = ExchangeRate.new(exchange_rate_params)
+    @exchange_rate.user = current_user
 
     respond_to do |format|
       if @exchange_rate.save
-        format.html { redirect_to exchange_rate_url(@exchange_rate), notice: "Exchange rate was successfully created." }
-        format.json { render :show, status: :created, location: @exchange_rate }
+        format.html { redirect_to settings_exchange_rates_url, notice: "Exchange rate was successfully created." }
+        format.json { render :index, status: :created, location: @exchange_rate }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { render :index, status: :unprocessable_entity }
         format.json { render json: @exchange_rate.errors, status: :unprocessable_entity }
       end
     end
