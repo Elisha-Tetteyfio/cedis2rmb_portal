@@ -1,5 +1,11 @@
 <div class="flex gap-x-10 py-4 px-8 rounded-t-lg border-b-2 border-solid border-body_bg bg-white ">
-  <%= link_to "Rates", settings_exchange_rates_path %>
-  <%= link_to "Limit", settings_limits_path %>
+  <%= link_to "Rates",
+    settings_exchange_rates_path,
+    class: "#{'active-link' if current_page?(settings_exchange_rates_path)} py-1 px-2 font-semibold"
+  %>
+  <%= link_to "Limit",
+    settings_limits_path,
+    class: "#{'active-link' if current_page?(settings_limits_path)} py-1 px-2 font-semibold"
+  %>
   <div>User profile</div>
 </div>
