@@ -1,0 +1,28 @@
+<div class="w-full p-4">
+
+  <%= render 'settings/links' %>
+
+  <div class="bg-white px-8 py-4">
+
+    <turbo-frame id="limits" turbo-visit-control="reload" class="min-w-full">
+      <div class="flex justify-between items-center">
+        <h1 class="font-bold text-4xl">Limits</h1>
+      </div>
+
+      <div class="my-8">
+        <div class="text-xl">Min value (GHS):</div>
+        <div class="w-[15%] rounded border-solid border-slate_dark border-2"> <%= @limit.min_value %> </div>
+      </div>
+
+      <div class="my-8">
+        <div class="text-xl">Max value (GHS):</div>
+        <div class="w-[15%] rounded border-solid border-slate_dark border-2"><%= @limit.max_value %></div>
+      </div>
+
+      <%= link_to "Edit limits",
+        edit_settings_limit_path(@limit),
+        class: "w-[15%] rounded-lg py-3 px-5 bg-blue text-white text-center block font-medium"
+      %>
+    </turbo-frame>
+  </div>
+</div>

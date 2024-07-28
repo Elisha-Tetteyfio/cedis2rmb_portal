@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   namespace :settings do
     resources :exchange_rates, only: [:index, :create, :new]
+    resources :limits, only: [:index, :update, :edit], controller: 'limits' do
+      member do
+        patch 'edit', action: :update
+      end
+    end
   end
 
   # Use only devise sessions
