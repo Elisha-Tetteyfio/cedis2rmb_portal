@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :orders
   namespace :settings do
     resources :exchange_rates, only: [:index, :create, :new]
     resources :limits, only: [:index, :update, :edit], controller: 'limits' do

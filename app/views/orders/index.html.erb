@@ -1,0 +1,43 @@
+<div class="w-full p-4">
+  
+  <div class="bg-white rounded-lg">
+
+    <% content_for :title, "Orders" %>
+
+    <div class="flex justify-between items-center">
+      <h1 class="font-bold text-4xl">Orders</h1>
+      <%= link_to "New order", new_order_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+    </div>
+
+    <div class="p-4">
+      <table class="w-full text-sm ">
+        <thead>
+          <tr class="text-left bg-slate_medium border-y-2 border-slate_dark">
+            <th class="p-2">S/N</th>
+            <th class="p-2">Amount(GHS)</th>
+            <th class="p-2">Rate</th>
+            <th class="p-2">Status</th>
+            <th class="p-2">Date</th>
+            <th class="p-2">Action</th>
+          </tr>
+        </thead>
+        <tbody class="bg-white">
+          <% @orders.each_with_index do |order, index| %>
+            <tr class="bg-white border-b-2 border-slate_dark border-solid py-0">
+              <td class="p-2"><%= (index+1) %></td>
+              <td class="p-2"><%= order.amount %></td>
+              <td class="p-2"><%= order.rate %></td>
+              <td class="p-2">
+                <div class="rounded text-center <%= order_status_bg(order.status) %>"><%= order.status %>Pending</div>
+              </td>
+              <td class="p-2"><%= format_date(order.created_at)%></td>
+              <td class="p-2">
+                <%= link_to "View Details", order, class: "bg-blue rounded p-1 text-white" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

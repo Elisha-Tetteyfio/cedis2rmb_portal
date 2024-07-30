@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_27_162457) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_29_073102) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -27,6 +27,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_27_162457) do
     t.decimal "max_value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.decimal "amount"
+    t.decimal "rate"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -51,5 +61,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_27_162457) do
   end
 
   add_foreign_key "exchange_rates", "users"
+  add_foreign_key "orders", "users"
   add_foreign_key "users", "roles"
 end
