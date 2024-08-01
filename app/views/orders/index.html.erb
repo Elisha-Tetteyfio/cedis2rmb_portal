@@ -1,14 +1,7 @@
 <div class="w-full p-4">
+  <%= render 'header' %>
   
   <div class="bg-white rounded-lg">
-
-    <% content_for :title, "Orders" %>
-
-    <div class="flex justify-between items-center">
-      <h1 class="font-bold text-4xl">Orders</h1>
-      <%= link_to "New order", new_order_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
-    </div>
-
     <div class="p-4">
       <table class="w-full text-sm ">
         <thead>
@@ -23,12 +16,13 @@
         </thead>
         <tbody class="bg-white">
           <% @orders.each_with_index do |order, index| %>
-            <tr class="bg-white border-b-2 border-slate_dark border-solid py-0">
-              <td class="p-2"><%= (index+1) %></td>
+            <tr class="bg-white border-b-2 border-slate_medium border-solid py-0">
+              <!-- Calculation to get the index -->
+              <td class="p-2"><%= (index+(@page*25)-24) %></td>
               <td class="p-2"><%= order.amount %></td>
               <td class="p-2"><%= order.rate %></td>
               <td class="p-2">
-                <div class="rounded text-center <%= order_status_bg(order.status) %>"><%= order.status %>Pending</div>
+                <div class="rounded text-center <%= order_status_bg(order.status) %>"><%= order.status %></div>
               </td>
               <td class="p-2"><%= format_date(order.created_at)%></td>
               <td class="p-2">
@@ -38,6 +32,7 @@
           <% end %>
         </tbody>
       </table>
+      <%= paginate @orders, window: 2%>
     </div>
   </div>
 </div>

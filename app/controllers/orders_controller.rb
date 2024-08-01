@@ -3,7 +3,8 @@ class OrdersController < ApplicationController
 
   # GET /orders or /orders.json
   def index
-    @orders = Order.all
+    @page = params[:page].to_i
+    @orders = Order.order(created_at: :desc).page(params[:page])
   end
 
   # GET /orders/1 or /orders/1.json
