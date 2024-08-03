@@ -22,7 +22,7 @@
               <td class="p-2"><%= order.amount %></td>
               <td class="p-2"><%= order.rate %></td>
               <td class="p-2">
-                <div class="rounded text-center <%= order_status_bg(order.status) %>"><%= order.status %></div>
+                <div class="rounded text-center py-0.5 <%= order_status_bg(order.status) %>"><%= order.status %></div>
               </td>
               <td class="p-2"><%= format_date(order.created_at)%></td>
               <td class="p-2">
@@ -32,7 +32,13 @@
           <% end %>
         </tbody>
       </table>
-      <%= paginate @orders, window: 2%>
+      <div class="custom-pagination mt-4">
+        <%= will_paginate @orders,
+          renderer: CustomLinkRenderer,
+          inner_window: 2,
+          outer_window: 0
+        %>
+      </div>
     </div>
   </div>
 </div>

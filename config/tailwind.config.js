@@ -16,6 +16,7 @@ module.exports = {
     colors: {
       'body_bg': '#efefef',
       'white': '#ffffff',
+      'black': '#000000',
       'form_border': '#e6e6e6',
       'font-grey': '#737373',
       'blue': '#4f71fa',

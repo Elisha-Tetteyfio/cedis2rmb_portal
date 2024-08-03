@@ -36,8 +36,8 @@ gem "devise"
 
 gem "cancancan"
 
-gem "kaminari"
-
+# gem "kaminari"
+gem 'will_paginate'
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

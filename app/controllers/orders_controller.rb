@@ -3,8 +3,12 @@ class OrdersController < ApplicationController
 
   # GET /orders or /orders.json
   def index
-    @page = params[:page].to_i
-    @orders = Order.order(created_at: :desc).page(params[:page])
+    @page = params[:page].to_i.positive? ? params[:page].to_i : 1
+    @orders_status = params[:orders_status]
+    @orders = Order.order(created_at: :desc).paginate(page: params[:page], per_page:1)
+
+    # Filters
+    @orders = Order.where(status: params[:orders_status]).paginate(page: params[:page], per_page:1).order(created_at: :desc) if params[:orders_status].present?
   end
 
   # GET /orders/1 or /orders/1.json
