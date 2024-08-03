@@ -5,10 +5,10 @@ class OrdersController < ApplicationController
   def index
     @page = params[:page].to_i.positive? ? params[:page].to_i : 1
     @orders_status = params[:orders_status]
-    @orders = Order.order(created_at: :desc).paginate(page: params[:page], per_page:1)
+    @orders = Order.order(created_at: :desc).paginate(page: params[:page])
 
     # Filters
-    @orders = Order.where(status: params[:orders_status]).paginate(page: params[:page], per_page:1).order(created_at: :desc) if params[:orders_status].present?
+    @orders = Order.where(status: params[:orders_status]).paginate(page: params[:page]).order(created_at: :desc) if params[:orders_status].present?
   end
 
   # GET /orders/1 or /orders/1.json

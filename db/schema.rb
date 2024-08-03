@@ -30,7 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_29_073102) do
   end
 
   create_table "orders", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "user_id", null: false
+    t.uuid "user_id"
     t.decimal "amount"
     t.decimal "rate"
     t.string "status"
