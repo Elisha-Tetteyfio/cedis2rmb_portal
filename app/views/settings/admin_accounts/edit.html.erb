@@ -1,0 +1,36 @@
+<div class="w-full p-4">
+
+  <%= render 'settings/links' %>
+
+  <div class="bg-white px-8 py-4">
+  
+    <h1 class="font-bold text-4xl">Editing <%= @admin_account.account_name %> </h1>
+
+    <%= form_with(model: @admin_account, url: edit_settings_admin_account_path(@admin_account), class: "contents") do |form| %>
+      <div class="my-8">
+        <%= form.label :account_type_id, class: "font-semibold mt-4" %>
+        <%= form.select :account_type_id,
+          options_from_collection_for_select(@account_types, :id, :name, @admin_account.account_type_id),
+          {},
+          {class: "block rounded-md w-[30%] border border-slate_dark"}
+        %>
+      </div>
+
+      <div class="my-8">
+        <%= form.label :account_number, class: "font-semibold mt-4" %>
+        <%= form.text_field :account_number, class: "block rounded-md w-[30%] border border-slate_dark px-3 py-2 mt-2" %>
+      </div>
+
+      <div class="my-8">
+        <%= form.label :account_name, class: "font-semibold mt-4" %>
+        <%= form.text_field :account_name, class: "block rounded-md w-[30%] border border-slate_dark px-3 py-2 mt-2" %>
+      </div>
+
+      <div class="inline">
+        <%= form.submit "Update account details", class: "rounded-lg py-3 px-5 bg-blue text-white inline-block font-medium cursor-pointer" %>
+      </div>
+    <% end %>
+
+    <%= link_to "Back", settings_admin_accounts_path, class: "mt-2 rounded-lg py-3 px-5 bg-slate_dark inline-block font-medium" %>
+  </div>
+</div>

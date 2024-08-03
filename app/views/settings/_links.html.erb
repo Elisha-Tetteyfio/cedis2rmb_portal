@@ -7,5 +7,8 @@
     settings_limits_path,
     class: "#{'active-link' if current_page?(settings_limits_path)} py-1 px-2 font-semibold"
   %>
-  <div>User profile</div>
+  <%= link_to "Accounts",
+    settings_admin_accounts_path,
+    class: "#{'active-link' if current_page?(settings_admin_accounts_path)} py-1 px-2 font-semibold"
+  %>
 </div>
