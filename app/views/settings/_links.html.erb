@@ -9,6 +9,6 @@
   %>
   <%= link_to "Accounts",
     settings_admin_accounts_path,
-    class: "#{'active-link' if current_page?(settings_admin_accounts_path)} py-1 px-2 font-semibold"
+    class: "#{'active-link' if controller_name =="admin_accounts"} py-1 px-2 font-semibold"
   %>
 </div>
