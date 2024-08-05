@@ -1,12 +1,33 @@
-<div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto">
+<div class="w-full p-4">
+  <%= render 'header' %>
 
-    <%= render @order %>
+  <div class="bg-white rounded my-4 px-2 ">
+
+    <div class="py-4 border-b-2 m-2 border-slate_medium w-[50%] flex justify-between items-center">
+      <div class="flex gap-x-4 items-center">
+        <div class="w-[80px] h-[80px] rounded-full bg-blue bg-opacity-10 text-blue flex justify-center items-center">GU</div>
+        <div>
+          <div class="text-lg"><%= @order.user&.username || "Guest User" %></div>
+          <div class="text-font_grey_dark text-xs">GHS <%= @order.amount %></div>
+          <div class="text-xs <%= order_status_color(@order.status) %>"><%= @order.status %></div>
+        </div>
+      </div>
+      <div>
+        <button class="bg-blue rounded p-2 text-white">Toggle status</button>
+      </div>
+    </div>
+
+    <div class="text-font_grey_dark font-medium mt-4">
+      <div class="mb-4">
+        <div>Date</div>
+        <div class="w-[40%] px-4 py-2 border border-slate_medium text-font_grey"> <%= format_date(@order.created_at) %> </div>
+      </div>
+      <div class="mb-4">
+        <div>Rate</div>
+        <div class="w-[40%] px-4 py-2 border border-slate_medium text-font_grey"> <%= @order.rate %> </div>
+      </div>
+    </div>
 
     <%= link_to "Edit this order", edit_order_path(@order), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to "Back to orders", orders_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to "Destroy this order", @order, method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
-    </div>
   </div>
 </div>
