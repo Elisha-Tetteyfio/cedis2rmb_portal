@@ -13,7 +13,16 @@
         </div>
       </div>
       <div>
-        <button class="bg-blue rounded p-2 text-white">Toggle status</button>
+        <%= form_with(model: @order, url: order_path(@order), method: :patch) do |form| %>
+          <div>
+            <%= form.select :status,
+              options_for_select(Order.status_options, @order.status),
+              {},
+              class: "rounded border-blue",
+              onchange: "this.form.submit()"
+            %>
+          </div>
+        <% end %>
       </div>
     </div>
 
@@ -27,7 +36,5 @@
         <div class="w-[40%] px-4 py-2 border border-slate_medium text-font_grey"> <%= @order.rate %> </div>
       </div>
     </div>
-
-    <%= link_to "Edit this order", edit_order_path(@order), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
   </div>
 </div>
