@@ -16,8 +16,8 @@
         <div class="w-[40%] px-4 py-2 border border-slate_medium "> <%= @user.email %> </div>
       </div>
 
-      <div>
-        <%= link_to "Reset user password", edit_user_path(@user), class: "my-2 rounded-lg py-3 px-5 bg-slate_dark font-medium text-black" %>
+      <div class="mt-8">
+        <%= link_to "Reset user password", edit_user_path(@user), class: "rounded-lg py-3 px-5 bg-slate_dark font-medium text-black" %>
       </div>
     </div>
     <%= link_to "Back to users", users_path, class: "mt-2 rounded-lg py-3 px-5 bg-slate_dark inline-block font-medium" %>
