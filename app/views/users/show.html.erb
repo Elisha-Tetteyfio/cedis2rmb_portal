@@ -1,15 +1,29 @@
-<div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto">
-    <% if notice.present? %>
-      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-    <% end %>
+<div class="w-full p-4">
+  <div class="bg-white rounded-lg p-2">
+    <div class="flex  items-center justify-center">
+      <h1 class="font-bold text-4xl">User - <%= @user.username %> </h1>
+    </div>
+    <hr class="border-slate_dark "/>
 
-    <%= render @user %>
+    <div class="text-font_grey font-medium mb-4">
+      <div class="my-4">
+        <div>Username:</div>
+        <div class="w-[40%] px-4 py-2 border border-slate_medium "> <%= @user.username || "N/A" %> </div>
+      </div>
 
-    <%= link_to "Edit this user", edit_user_path(@user), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to "Back to users", users_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      <div class="my-4">
+        <div>Email:</div>
+        <div class="w-[40%] px-4 py-2 border border-slate_medium "> <%= @user.email %> </div>
+      </div>
+
+      <div>
+        <%= link_to "Reset user password", edit_user_path(@user), class: "my-2 rounded-lg py-3 px-5 bg-slate_dark font-medium text-black" %>
+      </div>
+    </div>
+    <%= link_to "Back to users", users_path, class: "mt-2 rounded-lg py-3 px-5 bg-slate_dark inline-block font-medium" %>
+
     <div class="inline-block ml-2">
-      <%= button_to "Destroy this user", @user, method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+      <%#= button_to "Destroy this user", @user, method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
     </div>
   </div>
 </div>
