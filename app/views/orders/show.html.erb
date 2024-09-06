@@ -3,7 +3,7 @@
 
   <div class="bg-white rounded my-4 px-2 ">
 
-    <div class="py-4 border-b-2 m-2 border-slate_medium w-[50%] flex justify-between items-center">
+    <div class="py-4 m-2 w-[50%] flex justify-between items-center">
       <div class="flex gap-x-4 items-center">
         <div class="w-[80px] h-[80px] rounded-full bg-blue bg-opacity-10 text-blue flex justify-center items-center">GU</div>
         <div>
@@ -26,6 +26,8 @@
       </div>
     </div>
 
+    <hr class="text-slate_medium mb-4 border-slate_medium border"/>
+
     <div class="text-font_grey_dark font-medium mt-4">
       <div class="mb-4">
         <div>Date</div>
@@ -34,6 +36,64 @@
       <div class="mb-4">
         <div>Rate</div>
         <div class="w-[40%] px-4 py-2 border border-slate_medium text-font_grey"> <%= @order.rate %> </div>
+      </div>
+      <div class="mb-4">
+        <div>WhatsApp Number</div>
+        <div class="w-[40%] px-4 py-2 border border-slate_medium text-font_grey"> <%= @order.whatsapp_number %> </div>
+      </div>
+    </div>
+
+    <hr class="text-font_grey_dark my-8"/>
+
+    <!-- Payer account -->
+    <div>
+      <div class="text-font_grey text-2xl">Payment Information</div>
+      <hr class="text-slate_medium mb-4 border-slate_medium border"/>
+
+      <div class="mb-4">
+        <div>Account type</div>
+        <div class="w-[40%] px-4 py-2 border border-slate_medium text-font_grey"> 
+          <%= @order.payer_account.account_type.name %>
+        </div>
+      </div>
+      <div class="mb-4">
+        <div>Account name</div>
+        <div class="w-[40%] px-4 py-2 border border-slate_medium text-font_grey"> 
+          <%= @order.payer_account.account_name %>
+        </div>
+      </div>
+      <div class="mb-4">
+        <div>Account number</div>
+        <div class="w-[40%] px-4 py-2 border border-slate_medium text-font_grey"> 
+          <%= @order.payer_account.account_number %>
+        </div>
+      </div>
+    </div>
+
+    <hr class="text-font_grey_dark my-8"/>
+
+    <!-- Recipient's account -->
+    <div>
+      <div class="text-font_grey text-2xl">Account Information</div>
+      <hr class="text-slate_medium mb-4 border-slate_medium border"/>
+
+      <div class="mb-4">
+        <div>Account type</div>
+        <div class="w-[40%] px-4 py-2 border border-slate_medium text-font_grey"> 
+          <%= @order.recipient_account.account_type.name %>
+        </div>
+      </div>
+      <div class="mb-4">
+        <div>Account name</div>
+        <div class="w-[40%] px-4 py-2 border border-slate_medium text-font_grey"> 
+          <%= @order.recipient_account.account_name %>
+        </div>
+      </div>
+      <div class="mb-4">
+        <div>Account number</div>
+        <div class="w-[40%] px-4 py-2 border border-slate_medium text-font_grey"> 
+          <%= @order.recipient_account.account_number %>
+        </div>
       </div>
     </div>
   </div>

@@ -31,7 +31,7 @@
         <% @exchange_rates.each do |exchange_rate| %>
           <tr class="border-b-2 border-slate_dark border-solid text-center">
             <td><%= exchange_rate.value %></td>
-            <td><%= exchange_rate.created_at %></td>
+            <td><%= format_date(exchange_rate.created_at) %></td>
             <td><%= exchange_rate.user.email %></td>
           </tr>
         <% end %>
@@ -39,7 +39,7 @@
     </table>
   </div>
 
-  <turbo-frame id="rate_form" class="bg-blue", turbo-visit-control= "reload">
+  <turbo-frame id="rate_form" turbo-visit-control="reload" class="bg-blue">
     <!-- Form pops up here -->
   </turbo-frame>
 </div>
