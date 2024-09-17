@@ -95,6 +95,12 @@
           <%= @order.recipient_account.account_number %>
         </div>
       </div>
+      <div class="mb-4">
+        <div>Payment reference</div>
+        <div class="w-[40%] px-4 py-2 border border-slate_medium text-font_grey"> 
+          <%= @order.reference %>
+        </div>
+      </div>
       <% if @order.recipient_account.qr_code.attached? %>
         <div class="mb-4">
           <div>QR code</div>

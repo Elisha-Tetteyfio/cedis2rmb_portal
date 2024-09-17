@@ -7,6 +7,7 @@
         <thead>
           <tr class="text-left bg-slate_medium border-y-2 border-slate_dark">
             <th class="p-2">S/N</th>
+            <th class="p-2">Order code</th>
             <th class="p-2">Amount(GHS)</th>
             <th class="p-2">Rate</th>
             <th class="p-2">Status</th>
@@ -19,6 +20,7 @@
             <tr class="bg-white border-b-2 border-slate_medium border-solid py-0">
               <!-- Calculation to get the index -->
               <td class="p-2"><%= (index+(@page*25)-24) %></td>
+              <td class="p-2"><%= order.order_code %></td>
               <td class="p-2"><%= order.amount %></td>
               <td class="p-2"><%= order.rate %></td>
               <td class="p-2">
