@@ -7,7 +7,7 @@
     <div class="flex items-center py-4 gap-x-3.5 justify-between">
       <div class="h-[60px] w-[170px] rounded-lg border-body_bg border-2 border-solid flex flex-col justify-between">
        <div class="rounded-t-lg text-xs border-body_bg border-b-2 border-solid">Current rate:</div>
-          <div class="text-3xl"><%= @current_rate.value %> </div>
+          <div class="text-3xl"><%= format_amount(@current_rate.value) %> </div>
         <div class="bg-green text-white rounded-b-lg text-xs text-center">RMB to 1 Cedi</div>
       </div>
       <turbo-frame class="flex justify-between items-center">
@@ -30,7 +30,7 @@
       </tbody>
         <% @exchange_rates.each do |exchange_rate| %>
           <tr class="border-b-2 border-slate_dark border-solid text-center">
-            <td><%= exchange_rate.value %></td>
+            <td><%= format_amount(exchange_rate.value) %></td>
             <td><%= format_date(exchange_rate.created_at) %></td>
             <td><%= exchange_rate.user.email %></td>
           </tr>

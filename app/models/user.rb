@@ -8,4 +8,12 @@ class User < ApplicationRecord
   def admin?
     role.role_name == 'Admin'
   end
+
+  def username_initials
+    name_parts = self.username.split.take(2)
+  
+    initials = name_parts.map { |name| name[0].upcase }.join
+    
+    initials
+  end
 end
