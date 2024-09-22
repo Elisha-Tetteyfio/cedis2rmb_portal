@@ -14,4 +14,7 @@ AccountType.find_or_create_by(name: "WeChat account", short_name: "WEC", currenc
 AccountType.find_or_create_by(name: "Bank account", short_name: "BaNK", currency: "RMB")
 
 # Admin
-User.create!(username: "Alfred Tally", role_id: 1, email: "alfredtally56@gmail.com", password: "Alfred")
+admin = User.create!(username: "Alfred Tally", role_id: 1, email: "alfredtally56@gmail.com", password: "Alfred")
+
+# Exchange rate
+ExchangeRate.find_or_create_by(value: 0.5, user_id: admin.id)
