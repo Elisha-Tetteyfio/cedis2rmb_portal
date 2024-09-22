@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.active-link {
+  @apply bg-blue bg-opacity-10 rounded text-blue
+} 
+
+.active-tab {
+  @apply bg-blue bg-opacity-10 rounded text-black
+} 
+#----------------------------------------------------------------
+
+
+.custom-pagination {
+  @apply p-4 text-center cursor-default w-full font-normal;
+}
+
+.pagination {
+  @apply flex;
+}
+
+.custom-pagination a,
+.custom-pagination span {
+  @apply px-3 py-1 border border-blue;
+}
+
+.custom-pagination a:hover,
+.custom-pagination a:focus {
+  @apply underline bg-blue bg-opacity-50;
+}
+
+.custom-pagination .current {
+  @apply bg-blue text-white px-3 py-1 border border-blue not-italic;
+}
+
+.custom-pagination .next_page,
+.custom-pagination .previous_page {
+  display: none;
+}
+
+.gap {
+  @apply border-none;
+}

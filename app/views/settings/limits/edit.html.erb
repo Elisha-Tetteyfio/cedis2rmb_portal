@@ -1,0 +1,28 @@
+<%= turbo_frame_tag "limits" do %>
+  <div class="w-full">
+    <h1 class="font-bold text-4xl">Editing limit</h1>
+
+    <div>
+      <%= form_with(model: @limit, url: edit_settings_limit_path(@limit)) do |form| %>
+        <div class="my-8">
+          <%= form.label "Minimum Value", class: "text-xl block" %>
+          <%= form.text_field :min_value,
+            autofocus: true,
+            class: "outline-none w-[15%] h-[35px] rounded border-solid border-slate_dark border-2"
+          %>
+        </div>
+
+        <div class="my-5">
+          <%= form.label "Maximum value", class: "text-xl block" %>
+          <%= form.text_field :max_value, class: "outline-none w-[15%] h-[35px] rounded border-solid border-slate_dark border-2" %>
+        </div>
+
+        <div class="inline">
+          <%= form.submit class: "rounded-lg py-3 px-5 bg-blue text-white inline-block font-medium cursor-pointer" %>
+        </div>
+      <% end %>
+    </div>
+
+    <%= link_to "Cancel Edit", settings_limits_path, class: "mt-2 rounded-lg py-3 px-5 bg-slate_dark inline-block font-medium" %>
+  </div>
+<%end%>

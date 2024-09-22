@@ -1,0 +1,40 @@
+<div class="w-full p-4">
+
+  <%= render 'settings/links' %>
+
+  <div class="bg-white px-8 py-4">
+
+    <div class="flex justify-between items-center">
+      <h1 class="font-bold text-4xl">My accounts</h1>
+      <%= link_to "+ New Account", new_settings_admin_account_path, class: "rounded-lg py-3 px-5 bg-blue text-white block font-medium" %>
+    </div>
+
+    <table class="mt-8 w-full">
+      <thead class="bg-body_bg border-y-2 border-slate_dark">
+        <tr>
+          <th>S/N</th>
+          <th>Account name</th>
+          <th>Account number</th>
+          <th>Account type</th>
+          <th>Update</th>
+        </tr>
+      </thead>
+      </tbody>
+        <% @admin_accounts.each_with_index do |admin_account, index| %>
+          <tr class="border-b-2 border-slate_dark border-solid text-center">
+            <td><%= (index+1) %></td>
+            <td><%= admin_account.account_name %></td>
+            <td><%= admin_account.account_number %></td>
+            <td><%= admin_account.account_type.short_name %></td>
+            <td>
+              <div class="flex justify-center">
+                <%= link_to "Edit", edit_settings_admin_account_path(admin_account), class: "bg-blue p-1 rounded" %>
+                /<%= button_to "Delete", settings_admin_account_path(admin_account), method: :delete, class: "rounded-lg p-1 bg-slate_dark" %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

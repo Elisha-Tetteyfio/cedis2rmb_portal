@@ -1,0 +1,45 @@
+<div class="w-full p-4">
+
+  <%= render 'settings/links' %>
+
+  <div class="bg-white px-8 py-4">
+
+    <div class="flex items-center py-4 gap-x-3.5 justify-between">
+      <div class="h-[60px] w-[170px] rounded-lg border-body_bg border-2 border-solid flex flex-col justify-between">
+       <div class="rounded-t-lg text-xs border-body_bg border-b-2 border-solid">Current rate:</div>
+          <div class="text-3xl"><%= format_amount(@current_rate.value) %> </div>
+        <div class="bg-green text-white rounded-b-lg text-xs text-center">RMB to 1 Cedi</div>
+      </div>
+      <turbo-frame class="flex justify-between items-center">
+        <%= link_to "Update exchange rate",
+          new_settings_exchange_rate_path,
+          data: { turbo_frame: "rate_form" },
+          class: "rounded-lg py-2 px-5 bg-blue text-white block font-medium"
+        %>
+      </turbo-frame>
+    </div>
+
+    <table class="mt-8 w-full">
+      <thead class="bg-body_bg border-y-2 border-slate_dark">
+        <tr>
+          <th>Value</th>
+          <th>Updated time</th>
+          <th>Updated by</th>
+        </tr>
+      </thead>
+      </tbody>
+        <% @exchange_rates.each do |exchange_rate| %>
+          <tr class="border-b-2 border-slate_dark border-solid text-center">
+            <td><%= format_amount(exchange_rate.value) %></td>
+            <td><%= format_date(exchange_rate.created_at) %></td>
+            <td><%= exchange_rate.user.email %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <turbo-frame id="rate_form" turbo-visit-control="reload" class="bg-blue">
+    <!-- Form pops up here -->
+  </turbo-frame>
+</div>
