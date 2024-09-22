@@ -12,3 +12,6 @@ AccountType.find_or_create_by(name: "Short code", short_name: "USSD", currency: 
 AccountType.find_or_create_by(name: "Alipay account", short_name: "ALI", currency: "RMB")
 AccountType.find_or_create_by(name: "WeChat account", short_name: "WEC", currency: "RMB")
 AccountType.find_or_create_by(name: "Bank account", short_name: "BaNK", currency: "RMB")
+
+# Admin
+User.create!(username: "Alfred Tally", role_id: 1, email: "alfredtally56@gmail.com", password: "Alfred")
