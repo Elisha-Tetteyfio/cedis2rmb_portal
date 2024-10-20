@@ -38,6 +38,8 @@ gem "cancancan"
 
 # gem "kaminari"
 gem 'will_paginate'
+
+gem "google-cloud-storage"
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
