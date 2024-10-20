@@ -12,3 +12,13 @@ AccountType.find_or_create_by(name: "Short code", short_name: "USSD", currency: 
 AccountType.find_or_create_by(name: "Alipay account", short_name: "ALI", currency: "RMB")
 AccountType.find_or_create_by(name: "WeChat account", short_name: "WEC", currency: "RMB")
 AccountType.find_or_create_by(name: "Bank account", short_name: "BaNK", currency: "RMB")
+
+# Admin
+admin = User.find_or_create_by(email: "alfredtally56@gmail.com") do |user|
+          user.password = "Alfred" 
+          user.username = 'Alfred Tally'
+          user.role_id= 1
+        end
+
+# Exchange rate
+ExchangeRate.find_or_create_by(value: 0.5, user_id: admin.id)

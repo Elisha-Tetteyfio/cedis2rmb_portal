@@ -103,11 +103,11 @@
           <%= @order.reference %>
         </div>
       </div>
-      <% if @order.recipient_account.qr_code.attached? %>
+      <% if @order.recipient_account.qr_code_url %>
         <div class="mb-4">
           <div>QR code</div>
           <div class="w-[40%] px-4 py-2 border border-slate_medium text-font_grey">
-            <%= image_tag url_for(@order.recipient_account.qr_code), alt: 'QR Code' %>
+            <%= image_tag url_for(@order.recipient_account.qr_code_url), alt: 'QR Code' %>
           </div>
         </div>
       <% end %>
